@@ -1,0 +1,28 @@
+server:
+  port: 9090
+eureka:
+  client:
+    service-url:
+      defaultZone : http://insane-service-registry:8761/eureka/
+
+spring:
+  application:
+    name: insane-resource-provider
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: insane-resource-provider
+            client-secret: gQVGRSuw4Pitr22YRr7sIHOQOgvFnQhf
+            authorization-grant-type: client_credentials
+            scope: openid
+            #redirect-uri: http://localhost:8081/login/oauth2/code/keycloak
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.insane.com:8080/realms/insane-realm
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
